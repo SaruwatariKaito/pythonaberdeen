@@ -1,13 +1,21 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 #banner {
     color: white;
     background-color: #1476b6;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    font-size: 30pt;
+        font-size: 30pt;
     line-height: 100%;
     padding: 12px;
     height: 50px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.hero-unit h1 {
+    font-size: 53px;
+    padding-bottom: 20px;
 }
 
 @media (max-width: 480px) {
@@ -28,6 +36,17 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+#when_and_where,
+#tweets {
+    margin-bottom: 30px;
+}
+
+#tweets iframe {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #footer {

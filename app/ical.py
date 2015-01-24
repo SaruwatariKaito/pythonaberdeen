@@ -3,17 +3,15 @@ from __future__ import print_function, absolute_import
 from datetime import date, datetime, timedelta
 import logging
 
-
 import yaml
-import pytz
 import requests
-from icalendar import Calendar
 
+import pytz
+from icalendar import Calendar
 import settings
 
 
 class Event(object):
-
     def __init__(self, start, title, where, description):
         self.start = start
         self.title = title
@@ -55,21 +53,18 @@ class Event(object):
 
     @classmethod
     def from_vevent(cls, vevent):
-
         return Event(
             start=vevent.get('dtstart').dt,
-            title=vevent.get('summary').title(),
-            where=vevent.get('location').title(),
-            description=str(vevent.get('description'))
+            title=vevent.get('summary'),
+            where=vevent.get('location') or "TBA",
+            description=''
         )
 
 
 def _load_calendar():
-    logging.debug("Loading Calendar from: %r", settings.ICAL_URL)
+    logging.info("Loading Calendar from: %r", settings.ICAL_URL)
     ical_request = requests.get(settings.ICAL_URL)
     cal = Calendar.from_ical(ical_request.text)
-    for k in cal.subcomponents:
-        logging.debug('Calendar - %r', k)
     return cal
 
 
@@ -93,7 +88,6 @@ def _nth(num):
 
 
 def upcoming_events(days=60, cal=None):
-
     if cal is None:
         cal = _load_calendar()
 
@@ -126,7 +120,6 @@ class NoEvents(Exception):
 
 
 def days_until_next_event():
-
     events = upcoming_events()
 
     if len(events) == 0:

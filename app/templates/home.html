@@ -1,94 +1,119 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <div class="row">
         <div class="span8">
             <div class="hero-unit">
-            <h1>Pythonistas of Edinburgh!</h1>
+                <h1>Pythonistas of Aberdeen!</h1>
 
-            <p class="lead">
-                We're a user group providing technical, professional and social
-                support for Python programmers based in Edinburgh. We meet in the
-                pub monthly, and periodically run other events.
-            </p>
+                <p class="lead">
+                    We are a group of Python programmers based in the granite city.
+                    If you are interested in the Python Programming language, this group is for you.
+                    All skill levels are welcome. We meet periodically at the pub, but we
+                    organise other events like dojos and talks.
+                </p>
             </div>
 
-            <h4>When and Where</h4>
+            <div id="when_and_where">
+                <h4>When and Where</h4>
 
-            <p>
-                Python Edinburgh meets on the <strong>4th Tuesday</strong> of
-                each month. Other events such as talks and sprints are hosted
-                less frequently.
-            </p>
-            {% if upcoming_events|count == 0 %}
-            <p>
-                There are no events arranged in the near future.
-            </p>
-            {% elif upcoming_events|count == 1 %}
-            <p>
-                The next event is <strong>{{upcoming_events[0].title}}</strong> on {{upcoming_events[0].date_string()}} in {{upcoming_events[0].where}}.
-            </p>
-            {% else %}
-            <p>
-                Upcoming events are:
-            </p>
-            <ul>
-            {% for e in upcoming_events|reverse %}
-                <li>
-                    <strong>{{e.title}}</strong> on {{e.date_string()}} in {{e.where}}
-                </li>
+                <p>
+                    Python Aberdeen meets on the <strong>4th Wednesday</strong> of
+                    each month usually at the pub for a casual beer. We'll organise other events like dojos and talks.
+                    The type of event and the place will be announced via
+                    <a href="http://twitter.com/pythonaberdeen">twitter</a> and the
+                    <a href="http://mail.python.org/mailman/listinfo/aberdeen">mailing list</a>.
+                </p>
 
-            {% endfor %}
-            </ul>
-            {% endif %}
+                {% if upcoming_events|count == 0 %}
+                    <p>
+                        There are no events arranged in the near future.
+                    </p>
+                {% elif upcoming_events|count == 1 %}
+                    <p>
+                        The next event is <strong>{{ upcoming_events[0].title }}</strong>
+                        on {{ upcoming_events[0].date_string() }} in {{ upcoming_events[0].where }}.
+                    </p>
+                {% else %}
+                    <p>
+                        Upcoming events are:
+                    </p>
+                    <ul>
+                        {% for e in upcoming_events|reverse %}
+                            <li>
+                                <strong>{{ e.title }}</strong> on {{ e.date_string() }} in {{ e.where }}
+                            </li>
 
-            <p>
-                Our meetup calendar is syndicated as <a href="http://www.google.com/calendar/feeds/practicalpoetry.co.uk_sbqp5tpnm93b3bleap3mqf67jk%40group.calendar.google.com/public/basic?futureevents=true">rss</a>
-                and <a href="http://www.google.com/calendar/ical/practicalpoetry.co.uk_sbqp5tpnm93b3bleap3mqf67jk%40group.calendar.google.com/public/basic.ics?futureevents=true">ical</a>,
-                or you can go and have a <a href="http://www.google.com/calendar/b/0/embed?src=practicalpoetry.co.uk_sbqp5tpnm93b3bleap3mqf67jk@group.calendar.google.com&mode=AGENDA">look</a>.
-            </p>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <p>
+                    Send an email to the <a href="http://mail.python.org/mailman/listinfo/aberdeen">mailing list</a> if you
+                    would like to propose or arrange an event!
+                </p>
+            </div>
         </div>
+
         <div class="span4">
             <div class="well">
-
-                <h4>Find out more?</h4>
+                <h4>Find out more!</h4>
 
                 <ul class="unstyled">
                     <li><i class="icon-twitter"></i>
-                        <a href="http://twitter.com/pythonedinburgh">
-                        Follow us on twitter</a></li>
+                        Follow us on <a href="http://twitter.com/pythonaberdeen">twitter</a>
+                    </li>
                     <li><i class="icon-envelope-alt"></i>
-                        Join the <a href="http://mail.python.org/mailman/listinfo/edinburgh">mailing list</a> or have a look through the
-                        <a href="http://mail.python.org/pipermail/edinburgh/">archives</a>
+                        Join the <a href="http://mail.python.org/mailman/listinfo/aberdeen">mailing list</a>
+                    </li>
+                    <li><i class="icon-linkedin-sign"></i>
+                        Join the <a href="https://www.linkedin.com/groups/Python-Aberdeen-8235991">Linkedin group</a>
                     </li>
                     <li><i class="icon-group"></i>
-                        IRC:<a href="irc://irc.freenode.net/python-scotland">
-                        #python-scotland</a> on Freenode
+                        Join the <a href="http://www.meetup.com/Aberdeen-Python-Meetup">meetup.com group</a>
+                    </li>
+                    <li><i class="icon-github"></i>
+                        Find our projects at <a href="https://github.com/python-aberdeen">GitHub</a>
                     </li>
                 </ul>
             </div>
-            <div>
-                <a href="http://www.oreilly.com/"><img src="/static/images/oreilly_ug.gif" width="250" height="60" /></a>
+
+            <div class="well">
+                <h4>Python resources</h4>
+
+                <p>If you want to start learning Python, there's no better place to start than <a href="https://docs.python.org/2/tutorial/">The Python Tutorial</a>!</p>
+            </div>
+
+            <div class="well">
+                <h4>Other groups and events in Aberdeen</h4>
+
+                <ul id="other_groups" class="unstyled">
+                    <li>
+                        <a href="http://codethecity.org">Code the City</a>
+                    </li>
+                    <li>
+                        <a href="http://webretreat.org">Web Retreat</a>
+                    </li>
+                    <li>
+                        <a href="http://techmeetup.co.uk">Techmeetup</a>
+                    </li>
+                    <li>
+                        <a href="http://northernlightsconf.co.uk">Northern Lights</a>
+                    </li>
+                    <li>
+                        <a href="http://refreshaberdeen.com">Refresh Aberdeen</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
-        {% if tweets %}
-            <h4>Recent Tweets</h4>
-            <div class="tweets">
-            {% for tweet in tweets %}
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object avatar" src="{{ tweet.profile_image_url }}">
-                    </a>
-                    <div class="media-body">
-                        {{ tweet.html }}
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="row">
+        <div class="span8">
+            <div id="tweets">
+                <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/pythonaberdeen" data-widget-id="558394327672844288"></a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
-        {% endif %}
-
-	
+        </div>
+    </div>
 {% endblock %}
